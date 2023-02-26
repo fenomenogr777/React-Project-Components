@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import NavigateContext from '../context/navigation';
 
-function Link({ children, to }) {
-  const { navigation } = useContext(NavigateContext);
+function Link({ children, to, className }) {
+  const { navigation, currentPath } = useContext(NavigateContext);
 
   const handleClick = e => {
     // IF CTRL(OR MAC) WHEN CLICKED ONE ON NEW PAGE
@@ -13,9 +13,12 @@ function Link({ children, to }) {
     e.preventDefault();
     navigation(to);
   };
-
   return (
-    <a onClick={handleClick} href={to}>
+    <a
+      className={`${className} ${currentPath === to ? 'active-link' : ''}`}
+      onClick={handleClick}
+      href={to}
+    >
       {children}
     </a>
   );

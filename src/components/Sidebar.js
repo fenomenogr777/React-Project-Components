@@ -6,17 +6,18 @@ function Sidebar() {
     { label: 'Button', path: '/button' },
     { label: 'Accordion', path: '/accordion' },
     { label: 'Dropdown', path: '/dropdown' },
+    { label: 'Modal', path: '/modal' },
   ];
 
   const renderedLinks = links.map(link => {
     return (
-      <Link key={link.path} to={link.path}>
+      <Link className="sidebar" key={link.path} to={link.path}>
         {link.label}
       </Link>
     );
   });
 
-  return <div>{renderedLinks}</div>;
+  return <div className="sidebar">{renderedLinks}</div>;
 }
 
 export default Sidebar;
