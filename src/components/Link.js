@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import NavigateContext from '../context/navigation';
 
+<<<<<<< HEAD
 function Link({ children, to, className }) {
   const { navigation, currentPath } = useContext(NavigateContext);
 
@@ -19,6 +20,18 @@ function Link({ children, to, className }) {
       onClick={handleClick}
       href={to}
     >
+=======
+function Link({ children, to }) {
+  const { navigation } = useContext(NavigateContext);
+
+  const handleClick = e => {
+    e.preventDefault();
+    navigation(to);
+  };
+
+  return (
+    <a onClick={handleClick} href={to}>
+>>>>>>> d49fb488b58c75ffe9593075cdbcb7a6d8ae9078
       {children}
     </a>
   );
