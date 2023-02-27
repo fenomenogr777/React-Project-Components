@@ -1,24 +1,23 @@
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-function Modal({ value, onChange }) {
-  const handleClick = () => {
-    onChange();
-  };
+function Modal({ children, actionBar, onClose }) {
+  // WHEN MODAL ON BODY OVERFLOW IS SET TO HIDDEN SO NO SCROLL HAPPENS
+  useEffect(() => {
+    document.body.classList.add('overflow-hidden');
 
-  const renderedValue = value.map(value => {
-    return (
-      <div key={value.content} className="modal">
-        <h2>{value.label}</h2>
-        <p>{value.content}</p>
-        <button onClick={handleClick}>close</button>
-      </div>
-    );
-  });
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, []);
 
   return ReactDOM.createPortal(
     <div>
-      <div onClick={onChange} className="overlay"></div>
-      <div>{renderedValue}</div>
+      <div onClick={onClose} className="overlay"></div>
+      <div className="modal">
+        {children}
+        {actionBar}
+      </div>
     </div>,
     document.querySelector('.modal-container')
   );

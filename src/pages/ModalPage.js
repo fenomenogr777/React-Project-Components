@@ -1,13 +1,9 @@
 import Modal from '../components/Modal';
-import Button from '../components/Button';
-import { useRef, useState } from 'react';
+import { Button, Typography } from '@mui/material';
+import { useState } from 'react';
 
 function ModalPage() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const divEl = useRef();
-
-  const value = [{ label: 'titlos', content: 'keimeno' }];
 
   const closeModal = () => {
     setIsOpen(false);
@@ -17,10 +13,32 @@ function ModalPage() {
     setIsOpen(!isOpen);
   };
 
+  const modal = (
+    <Modal
+      onClose={closeModal}
+      actionBar={
+        <Button
+          onClick={closeModal}
+          variant="contained"
+          color="error"
+          size="small"
+        >
+          close
+        </Button>
+      }
+    >
+      <Typography variant="h5" color="initial" paragraph>
+        Important text keimeno edo mesa
+      </Typography>
+    </Modal>
+  );
+
   return (
-    <div ref={divEl}>
-      <Button onClick={handleClick}>Open Modal</Button>
-      {isOpen && <Modal value={value} onChange={closeModal} />}
+    <div>
+      <Button onClick={handleClick} variant="contained" color="primary" sx={{m:2}}>
+        Open Modal
+      </Button>
+      {isOpen && modal}
     </div>
   );
 }

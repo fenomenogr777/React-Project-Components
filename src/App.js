@@ -1,9 +1,11 @@
+import './index.css';
 import Sidebar from './components/Sidebar';
 import Route from './components/Route';
 import HomePage from './pages/HomePage';
 import ButtonPage from './pages/ButtonPage';
 import DropdownPage from './pages/DropdownPage';
 import AccordionPage from './pages/AccordionPage';
+import ModalPage from './pages/ModalPage';
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
       </Route>
       <Route path={'/dropdown'}>
         <DropdownPage />
+      </Route>
+      <Route path={'/modal'}>
+        <ModalPage />
       </Route>
     </div>
   );
