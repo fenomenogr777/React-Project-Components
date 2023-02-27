@@ -7,7 +7,7 @@ import AccordionPage from './pages/AccordionPage';
 
 function App() {
   return (
-    <div>fff
+    <div>
       <Sidebar />
       <Route path="/">
         <HomePage />
